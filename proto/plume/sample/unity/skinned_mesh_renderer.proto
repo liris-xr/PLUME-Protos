@@ -15,22 +15,21 @@ message SkinnedMeshRendererDestroy {
 
 message SkinnedMeshRendererUpdate {
     ComponentIdentifier component = 1;
-    
+
     optional AssetIdentifier mesh = 2;
     optional ComponentIdentifier root_bone = 3;
     optional Bones bones = 4;
-    optional BlendShapeWeights blend_shape_weights = 5;
-    
+    reserved 5; // was blend_shape_weights; decoupled into SkinnedMeshRendererBlendShapeUpdate
+
     message Bones {
         repeated ComponentIdentifier ids = 1;
     }
+}
 
-    message BlendShapeWeights {
-        repeated BlendShapeWeight weights = 1;
-
-        message BlendShapeWeight {
-            int32 index = 1;
-            float weight = 2;
-        }
-    }
+// Blend shape weights recorded on their own high-frequency stream (decoupled from SkinnedMeshRendererUpdate)
+// so a face rig animating every frame can be captured with zero GC allocation. Weights are packed floats in
+// shape index order (0..blendShapeCount-1); the index is implicit.
+message SkinnedMeshRendererBlendShapeUpdate {
+    ComponentIdentifier component = 1;
+    repeated float weights = 2 [packed = true];
 }
