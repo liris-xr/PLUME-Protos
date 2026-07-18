@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package plume.sample.unity.hdrp;
+option csharp_namespace = "PLUME.Sample.Unity.HDRP";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/color.proto";
+
+message HDAdditionalCameraDataCreate {
+    ComponentIdentifier component = 1;
+}
+
+message HDAdditionalCameraDataDestroy {
+    ComponentIdentifier component = 1;
+}
+
+// Mirrors UnityEngine.Rendering.HighDefinition.HDAdditionalCameraData.
+message HDAdditionalCameraDataUpdate {
+    ComponentIdentifier component = 1;
+    optional HDClearColorMode clear_color_mode = 2;
+    optional common.Color background_color_hdr = 3;
+    optional bool clear_depth = 4;
+    optional int32 volume_layer_mask = 5;
+    optional ComponentIdentifier volume_anchor_override = 6;
+    optional HDCameraAntialiasingMode antialiasing = 7;
+    optional HDSMAAQualityLevel smaa_quality = 8;
+    optional HDTAAQualityLevel taa_quality = 9;
+    optional bool dithering = 10;
+    optional bool stop_nans = 11;
+    optional bool custom_rendering_settings = 12;
+    optional bool xr_rendering = 13;
+    // Physical camera / exposure-relevant
+    optional float focus_distance = 14;
+    optional int32 iso = 15;
+    optional float shutter_speed = 16;
+    optional float aperture = 17;
+}
+
+enum HDClearColorMode {
+    HD_CLEAR_COLOR_MODE_SKY = 0;
+    HD_CLEAR_COLOR_MODE_COLOR = 1;
+    HD_CLEAR_COLOR_MODE_NONE = 2;
+}
+
+enum HDCameraAntialiasingMode {
+    HD_CAMERA_ANTIALIASING_MODE_NONE = 0;
+    HD_CAMERA_ANTIALIASING_MODE_FAST_APPROXIMATE = 1;
+    HD_CAMERA_ANTIALIASING_MODE_TEMPORAL = 2;
+    HD_CAMERA_ANTIALIASING_MODE_SUBPIXEL_MORPHOLOGICAL = 3;
+}
+
+enum HDSMAAQualityLevel {
+    HDSMAA_QUALITY_LEVEL_LOW = 0;
+    HDSMAA_QUALITY_LEVEL_MEDIUM = 1;
+    HDSMAA_QUALITY_LEVEL_HIGH = 2;
+}
+
+enum HDTAAQualityLevel {
+    HDTAA_QUALITY_LEVEL_LOW = 0;
+    HDTAA_QUALITY_LEVEL_MEDIUM = 1;
+    HDTAA_QUALITY_LEVEL_HIGH = 2;
+}

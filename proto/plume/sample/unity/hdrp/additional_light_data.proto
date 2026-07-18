@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package plume.sample.unity.hdrp;
+option csharp_namespace = "PLUME.Sample.Unity.HDRP";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/color.proto";
+
+message HDAdditionalLightDataCreate {
+    ComponentIdentifier component = 1;
+}
+
+message HDAdditionalLightDataDestroy {
+    ComponentIdentifier component = 1;
+}
+
+// Mirrors UnityEngine.Rendering.HighDefinition.HDAdditionalLightData.
+// HDRP reads the authoritative directional-light intensity (lux) and the
+// sky/sun interaction from here, NOT from the built-in Light component.
+message HDAdditionalLightDataUpdate {
+    ComponentIdentifier component = 1;
+    optional float intensity = 2;
+    optional HDLightUnit light_unit = 3;
+    optional common.Color color = 4;
+    optional float color_temperature = 5;
+    optional bool use_color_temperature = 6;
+    optional bool interacts_with_sky = 7;     // drives Physically Based Sky
+    optional bool affect_diffuse = 8;
+    optional bool affect_specular = 9;
+    optional bool affects_volumetric = 10;
+    optional float light_dimmer = 11;
+    optional float volumetric_dimmer = 12;
+    optional float shadow_dimmer = 13;
+    optional float volumetric_shadow_dimmer = 14;
+    optional float volumetric_fade_distance = 15;
+    optional float range = 16;
+    optional float shape_radius = 17;
+    optional float shape_width = 18;
+    optional float shape_height = 19;
+    optional bool apply_range_attenuation = 20;
+    optional common.Color surface_tint = 21;
+    optional common.Color shadow_tint = 22;
+}
+
+enum HDLightUnit {
+    HD_LIGHT_UNIT_LUMEN = 0;
+    HD_LIGHT_UNIT_CANDELA = 1;
+    HD_LIGHT_UNIT_LUX = 2;
+    HD_LIGHT_UNIT_NITS = 3;
+    HD_LIGHT_UNIT_EV100 = 4;
+}
