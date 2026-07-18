@@ -15,37 +15,23 @@ message HDAdditionalLightDataDestroy {
 }
 
 // Mirrors UnityEngine.Rendering.HighDefinition.HDAdditionalLightData.
-// HDRP reads the authoritative directional-light intensity (lux) and the
-// sky/sun interaction from here, NOT from the built-in Light component.
+// Only HDRP-specific light data lives here. Intensity, light unit, color, color
+// temperature and range are on the core UnityEngine.Light component (recorded by
+// the core Light module) — HDRP reads them from there (legacyLight.intensity /
+// legacyLight.lightUnit).
 message HDAdditionalLightDataUpdate {
     ComponentIdentifier component = 1;
-    optional float intensity = 2;
-    optional HDLightUnit light_unit = 3;
-    optional common.Color color = 4;
-    optional float color_temperature = 5;
-    optional bool use_color_temperature = 6;
-    optional bool interacts_with_sky = 7;     // drives Physically Based Sky
-    optional bool affect_diffuse = 8;
-    optional bool affect_specular = 9;
-    optional bool affects_volumetric = 10;
-    optional float light_dimmer = 11;
-    optional float volumetric_dimmer = 12;
-    optional float shadow_dimmer = 13;
-    optional float volumetric_shadow_dimmer = 14;
-    optional float volumetric_fade_distance = 15;
-    optional float range = 16;
-    optional float shape_radius = 17;
-    optional float shape_width = 18;
-    optional float shape_height = 19;
-    optional bool apply_range_attenuation = 20;
-    optional common.Color surface_tint = 21;
-    optional common.Color shadow_tint = 22;
-}
-
-enum HDLightUnit {
-    HD_LIGHT_UNIT_LUMEN = 0;
-    HD_LIGHT_UNIT_CANDELA = 1;
-    HD_LIGHT_UNIT_LUX = 2;
-    HD_LIGHT_UNIT_NITS = 3;
-    HD_LIGHT_UNIT_EV100 = 4;
+    optional bool interacts_with_sky = 2;      // drives Physically Based Sky
+    optional bool affect_diffuse = 3;
+    optional bool affect_specular = 4;
+    optional bool affects_volumetric = 5;
+    optional float light_dimmer = 6;
+    optional float volumetric_dimmer = 7;
+    optional float shadow_dimmer = 8;
+    optional float volumetric_shadow_dimmer = 9;
+    optional float volumetric_fade_distance = 10;
+    optional float shape_radius = 11;
+    optional bool apply_range_attenuation = 12;
+    optional common.Color surface_tint = 13;
+    optional common.Color shadow_tint = 14;
 }

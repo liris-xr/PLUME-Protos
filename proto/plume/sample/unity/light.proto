@@ -58,10 +58,22 @@ message LightUpdate {
     optional float cookie_size = 30;
 
     optional AssetIdentifier flare = 31;
+
+    // Physical light unit (Unity 6 core Light API). HDRP/URP interpret `intensity`
+    // relative to this unit; absent on records from older versions.
+    optional LightUnit light_unit = 32;
 }
 
 message LayerShadowCullDistances {
     repeated float distances = 1;
+}
+
+enum LightUnit {
+    LIGHT_UNIT_LUMEN = 0;
+    LIGHT_UNIT_CANDELA = 1;
+    LIGHT_UNIT_LUX = 2;
+    LIGHT_UNIT_NITS = 3;
+    LIGHT_UNIT_EV100 = 4;
 }
 
 enum LightType {
