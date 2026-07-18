@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package plume.sample.unity.settings;
+option csharp_namespace = "PLUME.Sample.Unity.Settings";
+
+import "plume/sample/unity/identifiers.proto";
+
+// Corresponds to the HDRP default volume profile (base of every volume stack:
+// VisualEnvironment / sky / fog / default exposure). Referenced by asset id so
+// the existing VolumeProfile asset-bundling carries it.
+message HDRPGlobalSettingsUpdate {
+    optional AssetIdentifier default_volume_profile = 1;
+}

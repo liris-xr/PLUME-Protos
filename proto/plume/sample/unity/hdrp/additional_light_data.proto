@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package plume.sample.unity.hdrp;
+option csharp_namespace = "PLUME.Sample.Unity.HDRP";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/color.proto";
+
+message HDAdditionalLightDataCreate {
+    ComponentIdentifier component = 1;
+}
+
+message HDAdditionalLightDataDestroy {
+    ComponentIdentifier component = 1;
+}
+
+// Mirrors UnityEngine.Rendering.HighDefinition.HDAdditionalLightData.
+// Only HDRP-specific light data lives here. Intensity, light unit, color, color
+// temperature and range are on the core UnityEngine.Light component (recorded by
+// the core Light module) — HDRP reads them from there (legacyLight.intensity /
+// legacyLight.lightUnit).
+message HDAdditionalLightDataUpdate {
+    ComponentIdentifier component = 1;
+    optional bool interacts_with_sky = 2;      // drives Physically Based Sky
+    optional bool affect_diffuse = 3;
+    optional bool affect_specular = 4;
+    optional bool affects_volumetric = 5;
+    optional float light_dimmer = 6;
+    optional float volumetric_dimmer = 7;
+    optional float shadow_dimmer = 8;
+    optional float volumetric_shadow_dimmer = 9;
+    optional float volumetric_fade_distance = 10;
+    optional float shape_radius = 11;
+    optional bool apply_range_attenuation = 12;
+    optional common.Color surface_tint = 13;
+    optional common.Color shadow_tint = 14;
+}
