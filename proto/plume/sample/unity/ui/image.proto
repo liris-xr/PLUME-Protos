@@ -17,6 +17,15 @@ message ImageUpdate {
     ComponentIdentifier component = 1;
     optional AssetIdentifier sprite = 2;
     optional ImageType type = 3;
+    optional bool preserve_aspect = 4;
+    optional bool fill_center = 5;
+    optional ImageFillMethod fill_method = 6;
+    optional float fill_amount = 7;
+    optional bool fill_clockwise = 8;
+    // Meaning depends on fill_method (Image.OriginHorizontal, OriginVertical, Origin90, Origin180 or Origin360).
+    optional int32 fill_origin = 9;
+    optional bool use_sprite_mesh = 10;
+    optional float pixels_per_unit_multiplier = 11;
 }
 
 enum ImageType
@@ -25,4 +34,12 @@ enum ImageType
     IMAGE_TYPE_SLICED = 1;
     IMAGE_TYPE_TILED = 2;
     IMAGE_TYPE_FILLED = 3;
+}
+
+enum ImageFillMethod {
+    IMAGE_FILL_METHOD_HORIZONTAL = 0;
+    IMAGE_FILL_METHOD_VERTICAL = 1;
+    IMAGE_FILL_METHOD_RADIAL_90 = 2;
+    IMAGE_FILL_METHOD_RADIAL_180 = 3;
+    IMAGE_FILL_METHOD_RADIAL_360 = 4;
 }

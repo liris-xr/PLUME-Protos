@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+// Shared by UnityEngine.UI.Dropdown and TMPro.TMP_Dropdown
+
+message DropdownCreate {
+    ComponentIdentifier component = 1;
+}
+
+message DropdownDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message DropdownUpdate {
+    ComponentIdentifier component = 1;
+    optional int32 value = 2;
+    // Option labels, only sent when the option list changes
+    optional DropdownOptions options = 3;
+
+    message DropdownOptions {
+        repeated string texts = 1;
+    }
+}

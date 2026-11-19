@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/rect.proto";
+
+message RawImageCreate {
+    ComponentIdentifier component = 1;
+}
+
+message RawImageDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message RawImageUpdate {
+    ComponentIdentifier component = 1;
+    optional AssetIdentifier texture = 2;
+    optional common.Rect uv_rect = 3;
+}

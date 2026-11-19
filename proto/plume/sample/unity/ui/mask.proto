@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+message MaskCreate {
+    ComponentIdentifier component = 1;
+}
+
+message MaskDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message MaskUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional bool show_mask_graphic = 3;
+}

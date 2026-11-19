@@ -4,6 +4,7 @@ package plume.sample.unity.ui;
 option csharp_namespace = "PLUME.Sample.Unity.UI";
 
 import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/color.proto";
 
 message CanvasRendererCreate {
     ComponentIdentifier component = 1;
@@ -16,4 +17,7 @@ message CanvasRendererDestroy {
 message CanvasRendererUpdate {
     ComponentIdentifier component = 1;
     optional bool cull_transparent_mesh = 2;
+    // Vertex color multiplier set through CanvasRenderer.SetColor/SetAlpha, e.g. by Selectable color tint
+    // transitions (CrossFadeColor) and CanvasGroup-independent alpha fades.
+    optional common.Color color = 3;
 }

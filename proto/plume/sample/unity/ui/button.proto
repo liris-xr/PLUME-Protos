@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+// Emitted when Button.onClick is invoked, whatever the input (pointer, XR ray, poke, submit).
+message ButtonClick {
+    ComponentIdentifier component = 1;
+}

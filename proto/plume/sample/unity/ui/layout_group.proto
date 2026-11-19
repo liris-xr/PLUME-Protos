@@ -1,0 +1,125 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/unity/ui/text.proto";
+import "plume/sample/common/vector2.proto";
+import "plume/sample/common/vector4.proto";
+
+// Layout components are recorded for analysis. Their effect is already captured by RectTransform updates, so a
+// player should not re-run them on top of the recorded RectTransforms.
+
+message HorizontalOrVerticalLayoutGroupCreate {
+    ComponentIdentifier component = 1;
+}
+
+message HorizontalOrVerticalLayoutGroupDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message HorizontalOrVerticalLayoutGroupUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional bool vertical = 3;
+    // left, bottom, right, top (RectOffset, stored as floats)
+    optional common.Vector4 padding = 4;
+    optional TextAnchor child_alignment = 5;
+    optional float spacing = 6;
+    optional bool child_control_width = 7;
+    optional bool child_control_height = 8;
+    optional bool child_force_expand_width = 9;
+    optional bool child_force_expand_height = 10;
+    optional bool child_scale_width = 11;
+    optional bool child_scale_height = 12;
+    optional bool reverse_arrangement = 13;
+}
+
+message GridLayoutGroupCreate {
+    ComponentIdentifier component = 1;
+}
+
+message GridLayoutGroupDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message GridLayoutGroupUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    // left, bottom, right, top (RectOffset, stored as floats)
+    optional common.Vector4 padding = 3;
+    optional TextAnchor child_alignment = 4;
+    optional common.Vector2 cell_size = 5;
+    optional common.Vector2 spacing = 6;
+    optional GridCorner start_corner = 7;
+    optional GridAxis start_axis = 8;
+    optional GridConstraint constraint = 9;
+    optional int32 constraint_count = 10;
+}
+
+enum GridCorner {
+    GRID_CORNER_UPPER_LEFT = 0;
+    GRID_CORNER_UPPER_RIGHT = 1;
+    GRID_CORNER_LOWER_LEFT = 2;
+    GRID_CORNER_LOWER_RIGHT = 3;
+}
+
+enum GridAxis {
+    GRID_AXIS_HORIZONTAL = 0;
+    GRID_AXIS_VERTICAL = 1;
+}
+
+enum GridConstraint {
+    GRID_CONSTRAINT_FLEXIBLE = 0;
+    GRID_CONSTRAINT_FIXED_COLUMN_COUNT = 1;
+    GRID_CONSTRAINT_FIXED_ROW_COUNT = 2;
+}
+
+message LayoutElementCreate {
+    ComponentIdentifier component = 1;
+}
+
+message LayoutElementDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message LayoutElementUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional bool ignore_layout = 3;
+    optional float min_width = 4;
+    optional float min_height = 5;
+    optional float preferred_width = 6;
+    optional float preferred_height = 7;
+    optional float flexible_width = 8;
+    optional float flexible_height = 9;
+    optional int32 layout_priority = 10;
+}
+
+message AspectRatioFitterCreate {
+    ComponentIdentifier component = 1;
+}
+
+message AspectRatioFitterDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message AspectRatioFitterUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional AspectMode aspect_mode = 3;
+    optional float aspect_ratio = 4;
+}
+
+enum AspectMode {
+    ASPECT_MODE_NONE = 0;
+    ASPECT_MODE_WIDTH_CONTROLS_HEIGHT = 1;
+    ASPECT_MODE_HEIGHT_CONTROLS_WIDTH = 2;
+    ASPECT_MODE_FIT_IN_PARENT = 3;
+    ASPECT_MODE_ENVELOPE_PARENT = 4;
+}
