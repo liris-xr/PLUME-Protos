@@ -29,6 +29,7 @@ message ColorGradient {
 
     enum GradientMode {
         GRADIENT_MODE_BLEND = 0;
+        GRADIENT_MODE_UNSPECIFIED = -1;
         GRADIENT_MODE_FIXED = 1;
         GRADIENT_MODE_PERCEPTUAL_BLEND = 2;
     }
@@ -36,6 +37,7 @@ message ColorGradient {
 
 enum ColorSpace {
     COLOR_SPACE_UNINITIALIZED = 0;
+    COLOR_SPACE_UNSPECIFIED = -1;
     COLOR_SPACE_GAMMA = 1;
     COLOR_SPACE_LINEAR = 2;
 }

@@ -19,6 +19,7 @@ message AnimationCurveKeyFrame {
 
 enum WeightedMode {
     WEIGHTED_MODE_NONE = 0;
+    WEIGHTED_MODE_UNSPECIFIED = -1;
     WEIGHTED_MODE_IN = 1;
     WEIGHTED_MODE_OUT = 2;
     WEIGHTED_MODE_BOTH = 3;

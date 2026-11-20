@@ -32,6 +32,7 @@ message ButtonValue {
 
 enum InputActionType {
     INPUT_ACTION_TYPE_VALUE = 0;
+    INPUT_ACTION_TYPE_UNSPECIFIED = -1;
     INPUT_ACTION_TYPE_BUTTON = 1;
     INPUT_ACTION_TYPE_PASSTHROUGH = 2;
 }

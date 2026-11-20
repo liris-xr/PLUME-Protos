@@ -12,6 +12,7 @@ message AudioSettingsUpdate {
 
 enum SpeakerMode {
     SPEAKER_MODE_MONO = 0;
+    SPEAKER_MODE_UNSPECIFIED = -1;
     SPEAKER_MODE_STEREO = 1;
     SPEAKER_MODE_QUAD = 2;
     SPEAKER_MODE_SURROUND = 3;
