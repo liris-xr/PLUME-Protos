@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+// Shared by every Selectable-derived component (Button, Toggle, Slider, Scrollbar, Dropdown, InputField, their TMP
+// variants and custom Selectables). The component identifier points at the concrete component.
+
+message SelectableCreate {
+    ComponentIdentifier component = 1;
+}
+
+message SelectableDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message SelectableUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional bool interactable = 3;
+    // Visual state driving the transition (tint, sprite swap or animation). Highlighted means hovered.
+    optional SelectionState selection_state = 4;
+    optional SelectableTransition transition = 5;
+    // Graphic tinted or swapped by the transition
+    optional ComponentIdentifier target_graphic = 6;
+}
+
+enum SelectionState {
+    SELECTION_STATE_NORMAL = 0;
+    SELECTION_STATE_HIGHLIGHTED = 1;
+    SELECTION_STATE_PRESSED = 2;
+    SELECTION_STATE_SELECTED = 3;
+    SELECTION_STATE_DISABLED = 4;
+}
+
+enum SelectableTransition {
+    SELECTABLE_TRANSITION_NONE = 0;
+    SELECTABLE_TRANSITION_COLOR_TINT = 1;
+    SELECTABLE_TRANSITION_SPRITE_SWAP = 2;
+    SELECTABLE_TRANSITION_ANIMATION = 3;
+}

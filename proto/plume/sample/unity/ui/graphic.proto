@@ -13,4 +13,5 @@ message GraphicUpdate {
     optional bool raycast_target = 3;
     optional common.Vector4 raycast_padding = 4;
     optional AssetIdentifier material = 5;
+    optional bool enabled = 6;
 }

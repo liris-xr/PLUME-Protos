@@ -31,6 +31,7 @@ message CanvasUpdate {
     optional StandaloneRenderResize update_rect_transform_for_standalone = 15;
     optional ComponentIdentifier world_camera = 16;
     optional float normalized_sorting_grid_size = 17;
+    optional bool enabled = 18;
 }
 
 enum RenderMode {

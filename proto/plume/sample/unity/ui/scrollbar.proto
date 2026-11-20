@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+message ScrollbarCreate {
+    ComponentIdentifier component = 1;
+}
+
+message ScrollbarDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message ScrollbarUpdate {
+    ComponentIdentifier component = 1;
+    optional float value = 2;
+    optional float size = 3;
+    optional int32 number_of_steps = 4;
+    optional ScrollbarDirection direction = 5;
+}
+
+enum ScrollbarDirection {
+    SCROLLBAR_DIRECTION_LEFT_TO_RIGHT = 0;
+    SCROLLBAR_DIRECTION_RIGHT_TO_LEFT = 1;
+    SCROLLBAR_DIRECTION_BOTTOM_TO_TOP = 2;
+    SCROLLBAR_DIRECTION_TOP_TO_BOTTOM = 3;
+}

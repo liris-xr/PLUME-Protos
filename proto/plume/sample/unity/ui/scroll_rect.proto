@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+import "plume/sample/common/vector2.proto";
+
+message ScrollRectCreate {
+    ComponentIdentifier component = 1;
+}
+
+message ScrollRectDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message ScrollRectUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional common.Vector2 normalized_position = 3;
+    optional bool horizontal = 4;
+    optional bool vertical = 5;
+    optional ComponentIdentifier content = 6;
+    optional ComponentIdentifier viewport = 7;
+}

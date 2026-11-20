@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package plume.sample.unity.ui;
+option csharp_namespace = "PLUME.Sample.Unity.UI";
+
+import "plume/sample/unity/identifiers.proto";
+
+message CanvasGroupCreate {
+    ComponentIdentifier component = 1;
+}
+
+message CanvasGroupDestroy {
+    ComponentIdentifier component = 1;
+}
+
+
+message CanvasGroupUpdate {
+    ComponentIdentifier component = 1;
+    optional bool enabled = 2;
+    optional float alpha = 3;
+    optional bool interactable = 4;
+    optional bool blocks_raycasts = 5;
+    optional bool ignore_parent_groups = 6;
+}
