@@ -22,6 +22,7 @@ message ImageUpdate {
 enum ImageType
 {
     IMAGE_TYPE_SIMPLE = 0;
+    IMAGE_TYPE_UNSPECIFIED = -1;
     IMAGE_TYPE_SLICED = 1;
     IMAGE_TYPE_TILED = 2;
     IMAGE_TYPE_FILLED = 3;

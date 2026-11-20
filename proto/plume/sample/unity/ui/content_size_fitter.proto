@@ -21,6 +21,7 @@ message ContentSizeFitterUpdate {
 
 enum FitMode {
     FIT_MODE_UNCONSTRAINED = 0;
+    FIT_MODE_UNSPECIFIED = -1;
     FIT_MODE_MIN_SIZE = 1;
     FIT_MODE_PREF_SIZE = 2;
 }

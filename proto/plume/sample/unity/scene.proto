@@ -20,5 +20,6 @@ message ChangeActiveScene {
 
 enum LoadSceneMode {
     LOAD_SCENE_MODE_SINGLE = 0;
+    LOAD_SCENE_MODE_UNSPECIFIED = -1;
     LOAD_SCENE_MODE_ADDITIVE = 1;
 }

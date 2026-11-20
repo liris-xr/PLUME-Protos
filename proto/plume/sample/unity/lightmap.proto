@@ -18,5 +18,6 @@ message LightmapData {
 
 enum LightmapsMode {
     LIGHTMAPS_MODE_NON_DIRECTIONAL = 0;
+    LIGHTMAPS_MODE_UNSPECIFIED = -1;
     LIGHTMAPS_MODE_COMBINED_DIRECTIONAL = 1;
 }
