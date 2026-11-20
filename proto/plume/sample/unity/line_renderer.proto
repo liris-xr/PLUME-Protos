@@ -17,6 +17,14 @@ message LineRendererDestroy {
     ComponentIdentifier component = 1;
 }
 
+// Line positions, recorded by polling and decoupled from LineRendererUpdate so the recorder can serialize them
+// without managed allocation (e.g. an XR interactor ray rewritten every frame). Supersedes LineRendererUpdate.positions.
+message LineRendererPositionsUpdate {
+    ComponentIdentifier component = 1;
+    // x, y, z triplets, in the line's space (world or local, see LineRendererUpdate.use_world_space)
+    repeated float positions = 2 [packed = true];
+}
+
 message LineRendererUpdate {
     ComponentIdentifier component = 1;
     optional bool loop = 2;
